@@ -9,6 +9,7 @@ set(FOO_SOURCE_DIR
 )
 set(FOO_SOURCE
     ${FOO_SOURCE_DIR}/main.cpp
+    ${FOO_SOURCE_DIR}/time.cpp
 )
 set(FOO_LIBRARIES_DIR
     libs
@@ -30,9 +31,10 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 ###########
 # Project #
 ###########
+include_directories(${PROJECT_SOURCE_DIR}/include)
 add_executable(${FOO_PROJECT_NAME} ${FOO_SOURCE})
-
 foreach(LIBRARY ${FOO_LIBRARIES})
     add_subdirectory("${FOO_LIBRARIES_DIR}/${LIBRARY}")
 endforeach(LIBRARY)
 target_link_libraries(${FOO_PROJECT_NAME} ${FOO_LIBRARIES})
+message(STATUS "INCLUDE_DIRS: ${PROJECT_SOURCE_DIR}/include")
